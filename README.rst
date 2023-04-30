@@ -1,5 +1,5 @@
-
-# Alchemy Model Xlsx
+Alchemy Model Xlsx
+==================
 
 A library to management excel from SQLAlchemy queries.
 
@@ -137,7 +137,8 @@ We get all the attributes where this alias exists, in this way we build a dictio
     )
 
 
-## Create custom template
+Create custom template
+---------
 
 To create custom template, we can define custom aliases fields
 
@@ -184,7 +185,8 @@ or get aliases fiels from our model
     f.close()
 
     
-## Export data to excel
+Export data to excel
+---------
 
 to export data from a query, we can define a query where we can define filters and orders, so that when exporting, it takes the filters and orders and applies them.
 
@@ -215,7 +217,9 @@ to export data from a query, we can define a query where we can define filters a
     f = open(filename, "wb")
     f.write(xlsx_file)
     f.close()
-## Export data to csv
+
+Export data to csv
+---------
 
 Same procedure but now to export to csv
 
@@ -246,7 +250,9 @@ Same procedure but now to export to csv
     f = open(filename, "wb")
     f.write(xlsx_file)
     f.close()
-## Boolean expressions
+
+Boolean expressions
+---------
 
 To define boolean expressions both for exporting and importing data, we send as parameter "expr_bool" a dictionary where there will be two keys, True and False, and their values will be the ones that will be reflected when exporting, and when importing, it will take those values from the file and convert them to boolean values.
 
