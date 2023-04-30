@@ -20,7 +20,7 @@ def create_template(
 
     data = {}
 
-    for _, label in fields:
+    for _, label in fields.items():
         data[label] = [""]
 
     df = pd.DataFrame(data)

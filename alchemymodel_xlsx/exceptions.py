@@ -16,3 +16,11 @@ class FieldsSizeExceeded(Exception):
 
 class FieldAreNotBoolean(Exception):
     pass
+
+
+class SqlAlchemyError(Exception):
+    pass
+
+
+class FieldAreNotTypeRequired(Exception):
+    pass

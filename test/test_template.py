@@ -1,21 +1,9 @@
 # lib
-from os.path import dirname
-from os.path import abspath
-from os.path import join
 from io import BytesIO
 import pandas as pd
-import sys
-
-from sqlalchemy import Boolean
-
-# session
-from config.session import db_session
 
 # model
 from config.employee_model import Employee
-
-# add dir
-sys.path.insert(0, abspath(join(dirname(__file__), "..")))
 
 # own lib
 from alchemymodel_xlsx import create_template
@@ -38,7 +26,6 @@ class TestTemplate(unittest.TestCase):
 
     def test_create_template(self):
         xlsx_file = create_template(
-            model=self.model,
             fields=self.fields,
         )
 
@@ -46,7 +33,6 @@ class TestTemplate(unittest.TestCase):
 
     def test_equal_columns(self):
         xlsx_file = create_template(
-            model=self.model,
             fields=self.fields,
         )
 

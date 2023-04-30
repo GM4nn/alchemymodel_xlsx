@@ -46,11 +46,11 @@ def query_to_excel(
 
     data = {}
 
-    for key, label in fields:
+    for key, label in fields.items():
         data[label] = []
 
     for row in query:
-        for key, label in fields:
+        for key, label in fields.items():
             try:
                 raw_value = getattr(row, key)
             except AttributeError:

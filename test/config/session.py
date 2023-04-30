@@ -28,13 +28,13 @@ Base.metadata.create_all(engine)
 
 # insert data to employee
 employee1 = Employee(
-    email="gr_sql_model@example.com",
+    email="gr_sql_model_v1@example.com",
     entry_date="2022-01-01",
     salary=None,
     is_directive=True,
 )
 employee2 = Employee(
-    email="gr_sql_model2@example.com",
+    email="gr_sql_model_v2@example.com",
     entry_date="2020-01-01",
     salary=1500,
     is_directive=False,

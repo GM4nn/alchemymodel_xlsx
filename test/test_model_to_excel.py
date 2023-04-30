@@ -1,7 +1,4 @@
 # lib
-from os.path import dirname
-from os.path import abspath
-from os.path import join
 from io import BytesIO
 import pandas as pd
 

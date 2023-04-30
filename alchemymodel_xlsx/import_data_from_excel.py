@@ -1,12 +1,12 @@
 # lib
 from typing import Dict
-from io import BytesIO
 import pandas as pd
 
 #  sqlalchemy
 from sqlalchemy.orm import Session
 
 # own lib
+from alchemymodel_xlsx.exceptions import SqlAlchemyError
 from alchemymodel_xlsx.exceptions import FieldsNotEqual
 from alchemymodel_xlsx import utils
 
@@ -65,5 +65,12 @@ def import_data(
 
         objs.append(obj)
 
-    db_session.bulk_save_objects(objs)
-    db_session.commit()
+    try:
+        db_session.bulk_save_objects(objs)
+        db_session.commit()
+    except Exception as e:
+        raise SqlAlchemyError(
+            "Error from sqlalchemy when try import bulk data: `{}`".format(e)
+        )
+    finally:
+        db_session.close()

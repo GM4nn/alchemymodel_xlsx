@@ -1,6 +1,7 @@
 # lib
 from datetime import datetime
 import pandas as pd
+import os
 
 # orm
 from sqlalchemy import and_
@@ -20,9 +21,12 @@ import unittest
 class TextImportFromExcel(unittest.TestCase):
     @classmethod
     def setUpClass(self):
+        current_path = os.path.abspath(__file__)
+        current_dir = os.path.dirname(current_path)
+
         # set filename
-        self.filename1 = "test1_employees.xlsx"
-        self.filename2 = "test2_employees.xlsx"
+        self.filename1 = os.path.join(current_dir, "test_employees1.xlsx")
+        self.filename2 = os.path.join(current_dir, "test_employees2.xlsx")
 
         # set session
         self.db_session = db_session
@@ -46,8 +50,8 @@ class TextImportFromExcel(unittest.TestCase):
 
         return str(value)
 
-    def test_count_data_equal(self):
-        file = open(self.filename, "rb")
+    def test_data_count_equal(self):
+        file = open(self.filename1, "rb")
 
         import_data(
             file=file,
@@ -58,7 +62,7 @@ class TextImportFromExcel(unittest.TestCase):
         )
 
         # read excel data
-        excel_file = pd.read_excel(self.filename, na_filter=None)
+        excel_file = pd.read_excel(file, na_filter=None)
 
         # Get the number of rows in the DataFrame
         excel_row_count = len(excel_file)
@@ -90,11 +94,10 @@ class TextImportFromExcel(unittest.TestCase):
 
             if row_in_db:
                 data_from_db.append(row_in_db)
-
         assert len(data_from_db) == excel_row_count
 
-    def test_data_equal(self):
-        file = open(self.filename, "rb")
+    def test_equal_data(self):
+        file = open(self.filename2, "rb")
 
         import_data(
             file=file,
@@ -105,7 +108,7 @@ class TextImportFromExcel(unittest.TestCase):
         )
 
         # read excel data
-        excel_file = pd.read_excel(self.filename, na_filter=None)
+        excel_file = pd.read_excel(file, na_filter=None)
 
         # labels keys to column keys
         data_from_excel = []
