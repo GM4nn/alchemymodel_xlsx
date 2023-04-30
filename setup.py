@@ -1,10 +1,15 @@
 from setuptools import find_packages, setup
 
+with open("README.rst", "r", "utf-8") as handle:
+    readme = handle.read()
+
 setup(
     name="alchemymodel_xlsx",
-    version="1.0.0",
+    version="1.0.1",
     description="A library to management excel from SQLAlchemy queries.",
     packages=find_packages(exclude=["test", "test.*"]),
+    long_description=readme,
+    long_description_content_type="text/x-rst",
     python_requires=">=3.9",
     install_requires=[
         "XlsxWriter>=3.1.0",
